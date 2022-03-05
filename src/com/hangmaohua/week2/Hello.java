@@ -19,6 +19,8 @@ public class Hello extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        String username = req.getParameter("username");
+        req.getSession().setAttribute("username",username);
         PrintWriter writer = resp.getWriter();
         writer.println("Name:Huang Maohua");
         writer.println("ID:2020211001001313");
@@ -26,5 +28,8 @@ public class Hello extends HttpServlet {
         Date date = new Date(System.currentTimeMillis());
         simpleDateFormat.format(date);
         writer.println("Date and Time "+date);
+        if(username!=null){
+            resp.sendRedirect("index.jsp");
+        }
     }
 }
