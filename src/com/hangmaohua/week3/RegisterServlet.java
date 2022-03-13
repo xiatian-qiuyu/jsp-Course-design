@@ -7,10 +7,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public class LifeCycleServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -26,11 +24,16 @@ public class LifeCycleServlet extends HttpServlet {
         req.getSession().setAttribute("password",password);
 
         PrintWriter writer = resp.getWriter();
-        writer.println("Name:"+username);
-        writer.println("password:"+password);
-        writer.println("email:"+email);
-        writer.println("gender:"+sex);
-        writer.println("birthDay "+date);
-
+        writer.println("<HTML>");
+        writer.println("<HEAD>");
+        writer.println("</HEAD>");
+        writer.println("<BODY>");
+        writer.println("<p>Name:"+username+"</p>");
+        writer.println("<p>password:"+password+"<p>");
+        writer.println("<p>email:"+email+"</p>");
+        writer.println("<p>gender:"+sex+"</p>");
+        writer.println("<p>birthDay "+date+"</p>");
+        writer.println("</BODY>");
+        writer.println("</HTML>");
     }
 }

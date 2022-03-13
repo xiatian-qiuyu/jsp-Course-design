@@ -9,7 +9,7 @@
     </servlet>
     <servlet>
         <servlet-name>LifeCycleServlet</servlet-name>
-        <servlet-class>com.hangmaohua.week3.LifeCycleServlet</servlet-class>
+        <servlet-class>com.hangmaohua.week3.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>hello</servlet-name>

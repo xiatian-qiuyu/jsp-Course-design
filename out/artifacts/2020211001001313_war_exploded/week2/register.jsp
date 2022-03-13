@@ -11,14 +11,14 @@
     <title>Register</title>
 </head>
 <body>
- <form action="${pageContext.request.contextPath}/hello" name="form" method="post" onsubmit="return register()">
+ <form action="${pageContext.request.contextPath}/LifeCycleServlet" name="form" method="post" onsubmit="return register()">
      <h3>New User Registration</h3>
      <input type="text" name="username" id="username" placeholder="username"><span id="span1"></span><br>
      <input type="password" id="password" name="password" placeholder="password"><br>
      <input type="email" id="email" name="email" placeholder="email"> <br>
-     <strong>Gender</strong> <input type="radio" value="男" name="sex">Male
-            <input type="radio" value="女" name="sex">Female <br>
-     <input type="date" id="time"> <br>
+     <strong>Gender</strong> <input type="radio" value="male" name="sex">Male
+            <input type="radio" value="male" name="sex">Female <br>
+     <input type="date" id="time" name="date"> <br>
      <input type="submit" value="Register">
  </form>
 <script>
