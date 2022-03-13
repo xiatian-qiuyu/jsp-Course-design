@@ -6,9 +6,10 @@
 
 <h1> exercise 2:
  
-  ![image](https://user-images.githubusercontent.com/82584488/158050844-0ffe6fba-e4a3-44b8-88fa-0703ab381adb.png)
-  
-  ![image](https://user-images.githubusercontent.com/82584488/158053809-1a5fb837-50a8-4feb-afbd-af2df99f1323.png)
+ ![image](https://user-images.githubusercontent.com/82584488/158055077-fb445ba0-eab1-423e-afa6-b966696f0bf2.png)
+
+  ![image](https://user-images.githubusercontent.com/82584488/158055089-d49bcac0-92d3-4f8b-bb63-f46ca908c7f7.png)
+
 
 
 
