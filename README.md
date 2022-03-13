@@ -10,7 +10,6 @@
   
   ![image](https://user-images.githubusercontent.com/82584488/158053809-1a5fb837-50a8-4feb-afbd-af2df99f1323.png)
 
-  ![Uploading image.png…]()
 
 
   
