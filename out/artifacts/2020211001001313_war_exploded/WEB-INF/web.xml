@@ -11,6 +11,22 @@
         <servlet-name>LifeCycleServlet</servlet-name>
         <servlet-class>com.hangmaohua.week3.RegisterServlet</servlet-class>
     </servlet>
+   <!-- <servlet>
+        <servlet-name>Config</servlet-name>
+        <servlet-class>com.hangmaohua.week4.ConfigDemoServlet</servlet-class>
+<!-        <init-param>-->
+<!--            <param-name>name</param-name>-->
+<!--            <param-value>huang maohau</param-value>-->
+<!--        </init-param>-->
+<!--        <init-param>-->
+<!--            <param-name>studentId</param-name>-->
+<!--            <param-value>2020211001001313</param-value>-->
+<!--        </init-param>
+    </servlet>-->
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>com.hangmaohua.week3.RegisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>hello</servlet-name>
         <url-pattern>/hello</url-pattern>
@@ -19,6 +35,30 @@
         <servlet-name>LifeCycleServlet</servlet-name>
         <url-pattern>/LifeCycleServlet</url-pattern>
     </servlet-mapping>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>Config</servlet-name>-->
+<!--        <url-pattern>/Config</url-pattern>-->
+<!--    </servlet-mapping>-->
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:mysql://localhost:3306/userdbtest</param-value>
+    </context-param>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>123456</param-value>
+    </context-param>
     <welcome-file-list>
         <welcome-file>week2/register.jsp</welcome-file>
     </welcome-file-list>
