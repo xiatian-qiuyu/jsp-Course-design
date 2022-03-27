@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="../header.jsp" %>
 <html>
 <head>
     <title>Register</title>
@@ -17,7 +18,7 @@
      <input type="password" id="password" name="password" placeholder="password"><br>
      <input type="email" id="email" name="email" placeholder="email"> <br>
      <strong>Gender</strong> <input type="radio" value="male" name="sex">Male
-            <input type="radio" value="male" name="sex">Female <br>
+            <input type="radio" value="female" name="sex">Female <br>
      <input type="date" id="time" name="date"> <br>
      <input type="submit" value="Register">
  </form>
@@ -48,3 +49,4 @@
 </script>
 </body>
 </html>
+<%@include file="../footer.jsp" %>
