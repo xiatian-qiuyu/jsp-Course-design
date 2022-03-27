@@ -14,6 +14,8 @@
   <body>
   <h1>欢迎！</h1>
   <br>
+  <a href="HelloWorld">Helloworld Servlet-week1</a>
+  <br>
   <a href="hello">Student Info Servlet-week2</a>
   <br>
   <a href="LifeCycleServlet">Life Cycle Servlet-week3</a>
