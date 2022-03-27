@@ -17,7 +17,7 @@ public class HelloWorld extends HttpServlet {
         writer.println("<HEAD>");
         writer.println("</HEAD>");
         writer.println("<BODY>");
-        writer.println("<h1"+"Helloword"+"</h1>");
+        writer.println("<h1>"+"Helloword"+"</h1>");
         writer.println("</BODY>");
         writer.println("</HTML>");
     }
