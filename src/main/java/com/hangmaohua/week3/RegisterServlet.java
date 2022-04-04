@@ -16,19 +16,20 @@ public class RegisterServlet extends HttpServlet {
     private Connection con;
     @Override
     public void init() throws ServletException {
-        ServletContext context =this.getServletContext();
-        con=null;
-        String driver=context.getInitParameter("driver");
-        String url = context.getInitParameter("url");
-        String username=context.getInitParameter("username");
-        String password=context.getInitParameter("password");
-        try{
-            Class.forName(driver);
-            con = DriverManager.getConnection(url, username, password);
-            System.out.println("connetion: "+con);
-        }catch (ClassNotFoundException| SQLException e){
-            e.printStackTrace();
-        }
+//        ServletContext context =this.getServletContext();
+//        con=null;
+//        String driver=context.getInitParameter("driver");
+//        String url = context.getInitParameter("url");
+//        String username=context.getInitParameter("username");
+//        String password=context.getInitParameter("password");
+//        try{
+//            Class.forName(driver);
+//            con = DriverManager.getConnection(url, username, password);
+//            System.out.println("connetion: "+con);
+//        }catch (ClassNotFoundException| SQLException e){
+//            e.printStackTrace();
+//        }
+        con =(Connection) getServletContext().getAttribute("con");
     }
     
 
@@ -52,28 +53,29 @@ public class RegisterServlet extends HttpServlet {
             preparedStatement.setString(4,gender);
             preparedStatement.setDate(5, Date.valueOf(birthdate));
             int result = preparedStatement.executeUpdate();
+            resp.sendRedirect("login.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        PrintWriter writer = resp.getWriter();
-        writer.println("<HTML>");
-        writer.println("<HEAD>");
-        writer.println("</HEAD>");
-        writer.println("<BODY>");
-        writer.println("<table border='5'><tr><th>ID</th><th>UserName</th><th>Password</th><th>Email</th><th>Gender</th><th>BirthDate</th></tr>");
-        String sql1 ="SELECT ID,USERNAME,PASSWORD,EMAIL,GENDER,BIRTHDATE FROM USERTABLE";
-        try{
-            PreparedStatement preparedStatement=con.prepareStatement(sql1);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
-                writer.println("<tr><td>" +resultSet.getInt("ID")+"</td><td>"+resultSet.getString("username")+ "</td><td>"+resultSet.getString("password")+ "</td><td>"+resultSet.getString("email")+ "</td><td>"+resultSet.getString("gender")+ "</td><td>" +resultSet.getString("birthdate")+"</td></tr>");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        writer.println("</table>");
-        writer.println("</BODY>");
-        writer.println("</HTML>");
+//
+//        PrintWriter writer = resp.getWriter();
+//        writer.println("<HTML>");
+//        writer.println("<HEAD>");
+//        writer.println("</HEAD>");
+//        writer.println("<BODY>");
+//        writer.println("<table border='5'><tr><th>ID</th><th>UserName</th><th>Password</th><th>Email</th><th>Gender</th><th>BirthDate</th></tr>");
+//        String sql1 ="SELECT ID,USERNAME,PASSWORD,EMAIL,GENDER,BIRTHDATE FROM USERTABLE";
+//        try{
+//            PreparedStatement preparedStatement=con.prepareStatement(sql1);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            while(resultSet.next()){
+//                writer.println("<tr><td>" +resultSet.getInt("ID")+"</td><td>"+resultSet.getString("username")+ "</td><td>"+resultSet.getString("password")+ "</td><td>"+resultSet.getString("email")+ "</td><td>"+resultSet.getString("gender")+ "</td><td>" +resultSet.getString("birthdate")+"</td></tr>");
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        writer.println("</table>");
+//        writer.println("</BODY>");
+//        writer.println("</HTML>");
     }
 }

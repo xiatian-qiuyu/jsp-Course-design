@@ -16,19 +16,20 @@ public class LoginServlet extends HttpServlet {
     private Connection con;
     @Override
     public void init() {
-        ServletContext context =this.getServletContext();
-        con=null;
-        String driver=context.getInitParameter("driver");
-        String url = context.getInitParameter("url");
-        String username=context.getInitParameter("username");
-        String password=context.getInitParameter("password");
-        try{
-            Class.forName(driver);
-            con = DriverManager.getConnection(url, username, password);
-            System.out.println("connetion: "+con);
-        }catch (ClassNotFoundException| SQLException e){
-            e.printStackTrace();
-        }
+//        ServletContext context =this.getServletContext();
+//        con=null;
+//        String driver=context.getInitParameter("driver");
+//        String url = context.getInitParameter("url");
+//        String username=context.getInitParameter("username");
+//        String password=context.getInitParameter("password");
+//        try{
+//            Class.forName(driver);
+//            con = DriverManager.getConnection(url, username, password);
+//            System.out.println("connetion: "+con);
+//        }catch (ClassNotFoundException| SQLException e){
+//            e.printStackTrace();
+//        }
+        con = (Connection) getServletContext().getAttribute("con");
     }
 
     @Override
@@ -61,11 +62,21 @@ public class LoginServlet extends HttpServlet {
             writer.println("<BODY>");
             if(resultSet.next()){
 
-                writer.println("<p>"+"Login Success!"+"</p>");
-                writer.println("<p>"+"Welcome"+username+"</p>");
+//                writer.println("<p>"+"Login Success!"+"</p>");
+//                writer.println("<p>"+"Welcome"+username+"</p>");
+                req.setAttribute("id",resultSet.getInt("id"));
+                req.setAttribute("username",resultSet.getString("username"));
+                req.setAttribute("password",resultSet.getString("password"));
+                req.setAttribute("email",resultSet.getString("email"));
+                req.setAttribute("gender",resultSet.getString("gender"));
+                req.setAttribute("birthdate",resultSet.getString("birthdate"));
+
+                req.getRequestDispatcher("userinfo.jsp").forward(req,resp);
             }else{
-                writer.println("Username or Password Error!!!");
+//                writer.println("Username or Password Error!!!");
                 //resp.sendRedirect("week2/register.jsp");
+                req.setAttribute("message","username or password error!!!");
+                req.getRequestDispatcher("login.jsp").forward(req,resp);
             }
             writer.println("</BODY>");
             writer.println("</HTML>");

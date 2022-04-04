@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.io.PrintWriter" %><%--
   Created by IntelliJ IDEA.
   User: xiatian0708
   Date: 2022/3/27
@@ -7,11 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="header.jsp"%>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<h1>Login</h1>
+<%if(!(request.getAttribute("message")==null)){
+    out.println("<h3>"+request.getAttribute("message")+"</h3>");
+}%>
 <form action="${pageContext.request.contextPath}/Login" name="form" method="post" accept-charset="UTF-8" onsubmit="return register()">
     <h3>New User Registration</h3>
     <input type="text" name="username" id="username" placeholder="username" ><span id="span1"></span><br>
@@ -37,6 +36,5 @@
         }
     }
 </script>
-</body>
-</html>
+
 <%@include file="footer.jsp"%>

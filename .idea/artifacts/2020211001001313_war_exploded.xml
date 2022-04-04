@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="2020211001001313:war exploded">
+  <artifact type="exploded-war" build-on-make="true" name="2020211001001313:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/2020211001001313_war_exploded</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="2020211001001313/web/Web" />
@@ -11,6 +11,10 @@
           <element id="library" level="project" name="lib" />
         </element>
       </element>
+      <element id="library" level="project" name="Maven: org.apache.tomcat:jsp-api:6.0.53" />
+      <element id="library" level="project" name="Maven: org.apache.tomcat:servlet-api:6.0.53" />
+      <element id="library" level="project" name="lib" />
+      <element id="library" level="project" name="Maven: org.apache.tomcat:el-api:6.0.53" />
     </root>
   </artifact>
 </component>
