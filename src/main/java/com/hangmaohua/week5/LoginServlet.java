@@ -1,5 +1,7 @@
 package com.hangmaohua.week5;
 
+import com.hangmaohua.dao.UserDao;
+import com.hangmaohua.model.User;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -34,13 +36,27 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        req.getRequestDispatcher("WEB-INF/views/login.jsp").forward(req,resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+
+        UserDao userDao = new UserDao();
+        try {
+            User user = userDao.findByUsernamePassword(con, username, password);
+            if (user!=null){
+                req.setAttribute("user",user);
+                req.getRequestDispatcher("WEB-INF/views/userinfo.jsp").forward(req,resp);
+            }else{
+                req.setAttribute("message","username or password error!!!");
+                req.getRequestDispatcher("login.jsp").forward(req,resp);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 //        String sql1="INSERT INTO USERTABLE(username,password) VALUES(?,?)";
 //        try {
 //            PreparedStatement preparedStatement=con.prepareStatement(sql1);
