@@ -1,4 +1,6 @@
-<%@ page import="java.io.PrintWriter" %><%--
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="jakarta.servlet.http.Cookie" %>
+<%@ page import="java.util.Objects" %><%--
   Created by IntelliJ IDEA.
   User: xiatian0708
   Date: 2022/3/27
@@ -11,11 +13,30 @@
 <%if(!(request.getAttribute("message")==null)){
     out.println("<h3>"+request.getAttribute("message")+"</h3>");
 }%>
-<form action="${pageContext.request.contextPath}/Login" name="form" method="post" accept-charset="UTF-8" onsubmit="return register()">
+<%
+    Cookie[] allCookies = request.getCookies();
+    String username = "",password = "",remember = "0";
+    if(allCookies!=null){
+        for(Cookie c:allCookies){
+            //get one by one
+            if(c.getName().equals("cUsername")){
+                username=c.getValue();
+            }
+            if(c.getName().equals("cPassword")){
+                password=c.getValue();
+            }
+            if(c.getName().equals("cRemember")){
+                remember=c.getValue();
+            }
+        }
+    }
+%>
+<form action="Login" method="post" name="form" accept-charset="UTF-8" onsubmit="return register()">
     <h3>New User Registration</h3>
-    <input type="text" name="username" id="username" placeholder="username" ><span id="span1"></span><br>
-    <input type="password" id="password" name="password" placeholder="password"><br>
-    <input type="submit" value="Register">
+    <input type="text" name="username" value="<%=username%>" id="username" placeholder="username" ><span id="span1"></span><br>
+    <input type="password" id="password"value="<%=password%>" name="password" placeholder="password"><br>
+    <input type="checkbox" name="rememberMe" checked value="1" <%=Objects.equals(remember, "1") ?"checked":""%>/>Remember Me<br>
+    <input type="submit" value="Submit">
 </form>
 <script>
     function register(){

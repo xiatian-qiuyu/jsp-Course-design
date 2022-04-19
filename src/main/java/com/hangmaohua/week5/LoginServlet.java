@@ -5,9 +5,7 @@ import com.hangmaohua.model.User;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,11 +46,29 @@ public class LoginServlet extends HttpServlet {
         try {
             User user = userDao.findByUsernamePassword(con, username, password);
             if (user!=null){
-                req.setAttribute("user",user);
+                if(req.getParameter("rememberMe").equals("1")){
+                    //create cookies
+                    Cookie usernameCookie=new Cookie("cUsername",user.getUsername());
+                    Cookie passwordCookie = new Cookie("cPassword", user.getPassword());
+                    Cookie rememberCookie =new Cookie("cRemember",req.getParameter("rememberMe"));
+                    //setage
+                    usernameCookie.setMaxAge(5);
+                    passwordCookie.setMaxAge(5);
+                    rememberCookie.setMaxAge(5);
+                    //add cookie into response
+                    resp.addCookie(usernameCookie);
+                    resp.addCookie(passwordCookie);
+                    resp.addCookie(rememberCookie);
+                }
+                //create session
+                HttpSession session = req.getSession();
+                System.out.println("session id--"+session.getId());
+
+                session.setAttribute("user",user);
                 req.getRequestDispatcher("WEB-INF/views/userinfo.jsp").forward(req,resp);
             }else{
                 req.setAttribute("message","username or password error!!!");
-                req.getRequestDispatcher("login.jsp").forward(req,resp);
+                req.getRequestDispatcher("WEB-INF/views/login.jsp").forward(req,resp);
             }
         } catch (SQLException e) {
             e.printStackTrace();
