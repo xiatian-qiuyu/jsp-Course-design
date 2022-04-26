@@ -28,5 +28,6 @@
     <orderEntry type="library" name="Maven: org.apache.tomcat:jsp-api:6.0.53" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat:el-api:6.0.53" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat:servlet-api:6.0.53" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>
