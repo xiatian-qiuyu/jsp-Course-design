@@ -1,4 +1,4 @@
-<%@ page import="com.hangmaohua.model.User" %><%--
+<%@ page import="com.huangmaohua.model.User" %><%--
   Created by IntelliJ IDEA.
   User: xiatian0708
   Date: 2022/4/4

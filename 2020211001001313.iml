@@ -24,10 +24,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tomcat:jsp-api:6.0.53" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tomcat:el-api:6.0.53" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tomcat:servlet-api:6.0.53" level="project" />
-    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" exported="" name="lib" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 10.0.17" level="application_server_libraries" />
   </component>
 </module>

@@ -5,19 +5,19 @@
          version="4.0">
     <servlet>
         <servlet-name>HelloWorld</servlet-name>
-        <servlet-class>com.hangmaohua.week1.HelloWorld</servlet-class>
+        <servlet-class>com.huangmaohua.week1.HelloWorld</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>hello</servlet-name>
-        <servlet-class>com.hangmaohua.week2.Hello</servlet-class>
+        <servlet-class>com.huangmaohua.week2.Hello</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LifeCycleServlet</servlet-name>
-        <servlet-class>com.hangmaohua.week3.Life</servlet-class>
+        <servlet-class>com.huangmaohua.week3.Life</servlet-class>
     </servlet>
    <!-- <servlet>
         <servlet-name>Config</servlet-name>
-        <servlet-class>com.hangmaohua.week4.ConfigDemoServlet</servlet-class>
+        <servlet-class>com.huangmaohua.week4.ConfigDemoServlet</servlet-class>
 <!-        <init-param>-->
 <!--            <param-name>name</param-name>-->
 <!--            <param-value>huang maohau</param-value>-->
@@ -30,7 +30,7 @@
 
     <servlet>
         <servlet-name>register</servlet-name>
-        <servlet-class>com.hangmaohua.week3.RegisterServlet</servlet-class>
+        <servlet-class>com.huangmaohua.week3.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HelloWorld</servlet-name>
