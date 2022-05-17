@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="header.jsp" %>
 	<section id="advertisement">
 		<div class="container">
@@ -18,13 +19,16 @@
 					<div class="left-sidebar">
 						<h2>Category</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<!-- Loop_start -->					
+							<!-- Loop_start -->
+							<c:forEach var = "c" items="${categoryList}">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="<%=basePath%>shop?categoryId=1">Kids</a></h4>
+									<h4 class="panel-title"><a href="<%=basePath%>shop?categoryId=${c.categoryId}">${c.categoryName}</a></h4>
 								</div>
 								
-							</div><!-- Loop_end -->
+							</div>
+							</c:forEach>
+							<!-- Loop_end -->
 							<!-- delete_start -->
 							<div class="panel panel-default">
 								<div class="panel-heading">
@@ -78,26 +82,28 @@
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Features Items</h2>
 						<!-- loop_start -->
-						<div class="col-sm-4">
+						<c:forEach var="p" items="${productList}">
+						<div class="col-sm-4 padding-right">
 						
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="<%=basePath %>images/shop/product12.jpg" alt="" />
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<img src="<%=basePath %>getImg?id=${p.productId}" alt="" />
+										<h2>${p.price}</h2>
+										<p>${p.productName}</p>
+										<a href="<%=basePath%>cart?productId=${p.productId}&action=add" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									
 								</div>
 							<div class="choose">
 									<ul class="nav nav-pills nav-justified">
-										<li><a href="product-details.jsp"><i class="fa fa-plus-square"></i>Product-Details</a></li>
+										<li><a href="<%=basePath%>productDetails?id=${p.productId}"><i class="fa fa-plus-square"></i>Product-Details</a></li>
 									</ul>
 								</div>
 							</div>
 							
 						</div>
+						</c:forEach>
 				<!-- loop_end -->
 						
 					</div><!--features_items-->

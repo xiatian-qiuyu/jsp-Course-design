@@ -54,3 +54,7 @@
 
 ![](images/img_18.png)
 
+## Week12
+![](images/img_20.png)
+
+![](images/img_21.png)
