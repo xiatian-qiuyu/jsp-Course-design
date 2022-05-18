@@ -12,7 +12,7 @@
         <servlet-class>com.huangmaohua.week2.Hello</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LifeCycleServlet</servlet-name>
+        <servlet-name>LifeCycleServlet1</servlet-name>
         <servlet-class>com.huangmaohua.week3.Life</servlet-class>
     </servlet>
    <!-- <servlet>
@@ -41,7 +41,7 @@
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>LifeCycleServlet</servlet-name>
+        <servlet-name>LifeCycleServlet1</servlet-name>
         <url-pattern>/LifeCycleServlet</url-pattern>
 
     </servlet-mapping>
@@ -52,6 +52,24 @@
     <servlet-mapping>
         <servlet-name>register</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <servlet-class>com.huangmaohua.lab1.LifeCycleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <url-pattern>/life</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MyDearCycleServlet</servlet-name>
+        <servlet-class>com.huangmaohua.lab1.MyDearServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyDearCycleServlet</servlet-name>
+        <url-pattern>/MyDear</url-pattern>
     </servlet-mapping>
     <context-param>
         <param-name>driver</param-name>
@@ -72,4 +90,5 @@
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
+
 </web-app>
