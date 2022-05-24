@@ -87,6 +87,14 @@
         <param-name>password</param-name>
         <param-value>123456</param-value>
     </context-param>
+    <filter>
+        <filter-name>YourNameFilter</filter-name>
+        <filter-class>com.huangmaohua.lab2.YourNameFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>YourNameFilter</filter-name>
+        <url-pattern>/lab2/welcome.jsp</url-pattern>
+    </filter-mapping>
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
