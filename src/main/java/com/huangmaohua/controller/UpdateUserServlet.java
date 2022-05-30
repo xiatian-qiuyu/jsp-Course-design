@@ -14,53 +14,44 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 
-@WebServlet(name="UpdateUserServlet",value = "/updateUser")
+@WebServlet(name = "UpdateUserServlet",value = "/updateUser")
 public class UpdateUserServlet extends HttpServlet {
-
-    Connection con;
-
+    private Connection connection;
     @Override
     public void init() throws ServletException {
-        con = (Connection) getServletContext().getAttribute("con");
+        connection= (Connection) this.getServletContext().getAttribute("con");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("WEB-INF/views/updateUser.jsp").forward(req,resp);
-
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long id = Long.valueOf(req.getParameter("id"));
+        HttpSession session = req.getSession();
+        long id=((User)session.getAttribute("user")).getId();
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         String gender = req.getParameter("gender");
-        java.sql.Date birthdate = Date.valueOf(req.getParameter("birthdate"));
+        String date = req.getParameter("date");
         User user = new User();
-
         user.setId(id);
         user.setUsername(username);
-        user.setBirthdate((Date) birthdate);
-        user.setEmail(email);
-        user.setGender(gender);
         user.setPassword(password);
-
-        UserDao userdao = new UserDao();
-        int result=0;
+        user.setEmail(email);
+        user.setGender(String.valueOf(Long.parseLong(gender)));
+        user.setBirthdate(Date.valueOf(date));
+        UserDao userDao = new UserDao();
         try {
-            result= userdao.updateUser(con, user);
+            int n = userDao.updateUser(connection,user);
+            User updatedUser = userDao.findById(connection, (int) id);
+            session.removeAttribute("user");
+            session.setAttribute("user",updatedUser);
+            req.getRequestDispatcher("accountDetails").forward(req,resp);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if(result>0){
-            HttpSession session = req.getSession();
-            session.setAttribute("user",user);
-            req.getRequestDispatcher("WEB-INF/views/userinfo.jsp").forward(req,resp);
-        }else {
-            req.getRequestDispatcher("WEB-INF/views/updateUser.jsp").forward(req,resp);
-        }
-
     }
 }
