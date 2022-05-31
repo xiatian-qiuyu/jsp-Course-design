@@ -39,22 +39,18 @@ public class CalServlet extends HttpServlet {
         String secondVal = req.getParameter("secondVal");
         String cName = req.getParameter("cName");
         String action = req.getParameter("action");
-        int result = 0;
-        //todo 7:use if else to determine action is add or subtarat or multiply or divide or computerLength
-        //todo 8:call method add subtract ,multiply, divide or computeLength on action and get the calculated result
-        if (action.equals("add")) {
-            result = add(Integer.parseInt(firstVal), Integer.parseInt(secondVal));
-        } else if (action.equals("subtarat")) {
-            result = sub(Integer.parseInt(firstVal), Integer.parseInt(secondVal));
-        } else if (action.equals("multiply")) {
-            result = mul(Integer.parseInt(firstVal), Integer.parseInt(secondVal));
-        } else if (action.equals("divide")) {
-            result = div(Integer.parseInt(firstVal), Integer.parseInt(secondVal));
-        } else if (action.equals("computeLength")) {
-            result = computeLength(cName);
-        }
+        int result = switch (action) {
+            case "add" -> add(Integer.parseInt(firstVal), Integer.parseInt(secondVal));
+            case "substrata" -> sub(Integer.parseInt(firstVal), Integer.parseInt(secondVal));
+            case "multiply" -> mul(Integer.parseInt(firstVal), Integer.parseInt(secondVal));
+            case "divide" -> div(Integer.parseInt(firstVal), Integer.parseInt(secondVal));
+            case "computeLength" -> computeLength(cName);
+            default -> 0;
+            //todo 7:use if else to determine action is add or substrata or multiply or divide or computerLength
+            //todo 8:call method add subtract ,multiply, divide or computeLength on action and get the calculated result
+        };
         //todo 9:if action =add or subtract or multiply or divide
-        if(action.equals("add") || action.equals("subtarat") || action.equals("multiply") || action.equals("divide")){
+        if(action.equals("add") || action.equals("substrata") || action.equals("multiply") || action.equals("divide")){
             //todo 10:create 3 cookie name cFirstVal,cSecondVal,cResult and set the value of cookie
             HttpSession session = req.getSession();
             session.setAttribute("cFirstVal", firstVal);
